@@ -21,22 +21,24 @@ export class LoginComponent implements OnInit {
       1003: { acno: 1003, actype: "current", username: "userfour", password: "userfour", balance: 6000 }
   }
 
-  
-  accnoChange(event:any){
-    this.accno=event.target.value;
-    console.log(this.accno);
+  // fetch values
+  // accnoChange(event:any){
+  //   this.accno=event.target.value;
+  //   console.log(this.accno);
     
 
-  }
-  pswdChange(event:any){
-    this.pswd=event.target.value;
-    console.log(this.pswd);
+  // }
+  // pswdChange(event:any){
+  //   this.pswd=event.target.value;
+  //   console.log(this.pswd);
     
-  }
+  // }
   // login event binding
-  login(){
-    var account = this.accno;
-    var pswd = this.pswd;
+  login(a:any, p:any){
+    let account = a.value;
+    let pswd = p.value;
+    // var account = this.accno;
+    // var pswd = this.pswd;
     let users = this.accountDetails;
     if(account in users){
       if(pswd == users[account]["password"]){

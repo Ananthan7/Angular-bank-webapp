@@ -36,6 +36,7 @@
         </div>
       </nav>
     </header>
+    <!-- form -->
     <div class="form-section">
       <form>
         <div class="segment">
@@ -43,12 +44,14 @@
         </div>
 
         <label>
-          <input type="text" [value]="accno" (change)="accnoChange($event)" />
+          <!-- <input type="text" [value]="accno" #accno (change)="accnoChange($event)" /> -->
+          <input type="text" placeholder="account number" #accno />
         </label>
         <label>
-          <input type="password" placeholder="Password" (change)="pswdChange($event)" />
+          <!-- <input type="password" placeholder="Password" #password (change)="pswdChange($event)" /> -->
+          <input type="password" placeholder="Password" #password />
         </label>
-        <button class="red" (click)="login()" type="button">
+        <button class="red" (click)="login(accno, password)" type="button">
           <i class="icon ion-md-lock"></i> Log in
         </button>
 
