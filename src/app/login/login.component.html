@@ -45,13 +45,14 @@
 
         <label>
           <!-- <input type="text" [value]="accno" #accno (change)="accnoChange($event)" /> -->
-          <input type="text" placeholder="account number" #accno />
+          <!-- <input type="text" placeholder="account number" #accno /> -->
+          <input type="text" placeholder="account number" [(ngModel)]= "acno" name="account" />
         </label>
         <label>
           <!-- <input type="password" placeholder="Password" #password (change)="pswdChange($event)" /> -->
-          <input type="password" placeholder="Password" #password />
+          <input type="password" placeholder="Password" [(ngModel)]= "pswd" name="password" />
         </label>
-        <button class="red" (click)="login(accno, password)" type="button">
+        <button class="red" (click)="login()" type="button">
           <i class="icon ion-md-lock"></i> Log in
         </button>
 
@@ -68,25 +69,5 @@
         </div>
       </form>
     </div>
-
-    <!-- <div class="container-fluid" style="width: 100vh;">
-       <div class="header" style="text-align: center;"><h1 style="font-weight: bolder;">Bank-App</h1></div>
-       <div class="row m-5">
-            <div class="form-group w-50">
-              <label for="exampleInputEmail1">Account Number</label>
-              <input type="text" class="form-control" id="acno" placeholder="Enter Account number">
-            </div>
-            <div class="form-group w-50">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="uname" placeholder="Enter Username">
-            </div>
-            <div class="form-group w-50">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="text" class="form-control" id="pwd" placeholder="Password">
-            </div>
-            <button class="btn btn-primary mt-2" onclick="Bank.login()">Login</button>
-
-       </div>
-   </div> -->
   </body>
 </html>
