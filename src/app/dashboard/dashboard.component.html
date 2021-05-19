@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="main">
+        <h2>Welcome user</h2>
+    </div>
+<!-- deposit -->
+    <div class="form-section">
+        <form (ngSubmit)="deposit()">
+          <div class="segment">
+            <h1>Deposit</h1>
+          </div>
+          <label>
+            <input type="text" placeholder="account number" [(ngModel)]= "dacno" name="account" />
+          </label>
+          <label>
+            <input type="password" placeholder="Password" [(ngModel)]= "dpswd" name="password" />
+          </label>
+          <label>
+            <input type="text" placeholder="Amount" [(ngModel)]= "damount" name="amount" />
+          </label>
+          <button class="red" (click)="deposit()" type="submit">
+            <i class="icon ion-md-lock"></i> Deposit
+          </button>
+        </form>
+      </div>
+<!-- withdraw -->
+      <div class="form-section">
+        <form (ngSubmit)="withdraw()">
+          <div class="segment">
+            <h1>withdrw</h1>
+          </div>
+          <label>
+            <input type="text" placeholder="account number" [(ngModel)]= "wacno" name="account" />
+          </label>
+          <label>
+            <input type="password" placeholder="Password" [(ngModel)]= "wpswd" name="password" />
+          </label>
+          <label>
+            <input type="text" placeholder="Amount" [(ngModel)]= "wamount" name="amount" />
+          </label>
+          <button class="red" (click)="withdraw()" type="submit">
+            <i class="icon ion-md-lock"></i> withdraw
+          </button>
+        </form>
+      </div>
+</div>

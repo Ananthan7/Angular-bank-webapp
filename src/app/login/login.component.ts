@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -7,22 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  aim="banking partner";
-  acno="Account number";
+  aim="banking partner"
+  acno="";
   pswd="";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private dataService:DataService) { }
 
   ngOnInit(): void {
   }
   
   // datas
-  accountDetails:any = {
-      1000: { acno: 1000, actype: "savings", username: "userone", password: "userone", balance: 50000 },
-      1001: { acno: 1001, actype: "savings", username: "usertwo", password: "usertwo", balance: 5000 },
-      1002: { acno: 1002, actype: "current", username: "userthree", password: "userthree", balance: 10000 },
-      1003: { acno: 1003, actype: "current", username: "userfour", password: "userfour", balance: 6000 }
-  }
+  
 
   // fetch values
   // accnoChange(event:any){
@@ -40,20 +36,17 @@ export class LoginComponent implements OnInit {
   login(){
     let acno = this.acno;
     let pswd = this.pswd;
-    // var account = this.accno;
-    // var pswd = this.pswd;
-    let users = this.accountDetails;
-    if(acno in users){
-      if(pswd == users[acno]["password"]){
-        alert("login successful")
-        this.router.navigateByUrl("dashboard")
-      }else{
-        alert("invalid password")
-      }
-    }else{
-      alert("invalid account number")
-      
+    const users=this.dataService.login(acno,pswd);
+    if(users){
+      this.router.navigateByUrl("dashboard")
     }
+    else{
+      alert("invalid password")
+    }
+  }
+
+  register(){
+    this.router.navigateByUrl('register')
   }
   
 

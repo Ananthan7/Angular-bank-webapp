@@ -1,0 +1,20 @@
+<div class="form-section">
+    <form (ngSubmit)="register()">
+      <div class="segment">
+        <h1>Create New Account</h1>
+      </div>
+      <label>
+        <input type="text" placeholder="Username" [(ngModel)]= "uname" name="username" />
+      </label>
+      <label>
+        <input type="text" placeholder="account number" [(ngModel)]= "acno" name="account" />
+      </label>
+      <label>
+        <input type="password" placeholder="Password" [(ngModel)]= "pswd" name="password" />
+      </label>
+      <button class="red" (click)="register()" type="submit">
+        <i class="icon ion-md-lock"></i> Register
+      </button>
+      <a routerLink="" style="padding: 6px; text-decoration: none;">Login</a>
+    </form>
+  </div>
