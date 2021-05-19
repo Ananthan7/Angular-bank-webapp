@@ -1,4 +1,4 @@
-<div class="form-section">
+<!-- <div class="form-section">
     <form (ngSubmit)="register()">
       <div class="segment">
         <h1>Create New Account</h1>
@@ -11,6 +11,29 @@
       </label>
       <label>
         <input type="password" placeholder="Password" [(ngModel)]= "pswd" name="password" />
+      </label>
+      <button class="red" (click)="register()" type="submit">
+        <i class="icon ion-md-lock"></i> Register
+      </button>
+      <a routerLink="" style="padding: 6px; text-decoration: none;">Login</a>
+    </form>
+  </div> -->
+
+  <!-- reactiv form builder -->
+
+  <div class="form-section">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="segment">
+        <h1>Create New Account</h1>
+      </div>
+      <label>
+        <input type="text" placeholder="Username" formControlName= "uname" name="username" />
+      </label>
+      <label>
+        <input type="text" placeholder="account number" formControlName= "acno" name="account" />
+      </label>
+      <label>
+        <input type="password" placeholder="Password" formControlName= "pswd" name="password" />
       </label>
       <button class="red" (click)="register()" type="submit">
         <i class="icon ion-md-lock"></i> Register
