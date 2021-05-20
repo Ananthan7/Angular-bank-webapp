@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -8,11 +9,15 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  aim="banking partner"
-  acno="";
-  pswd="";
+  
 
-  constructor(private router:Router, private dataService:DataService) { }
+  // model
+  loginForm= this.fb.group({
+    acno:['', [Validators.required, Validators.minLength(3), Validators.pattern('[0-9]*')]],
+    pswd:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9]*')]],
+
+  })
+  constructor(private router:Router, private dataService:DataService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -34,8 +39,8 @@ export class LoginComponent implements OnInit {
   // }
   // login event binding
   login(){
-    let acno = this.acno;
-    let pswd = this.pswd;
+    let acno = this.loginForm.value.acno;
+    let pswd = this.loginForm.value.pswd;
     const users=this.dataService.login(acno,pswd);
     if(users){
       this.router.navigateByUrl("dashboard")

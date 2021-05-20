@@ -4,40 +4,50 @@
     </div>
 <!-- deposit -->
     <div class="form-section">
-        <form (ngSubmit)="deposit()">
+        <form [formGroup]="depositForm" (ngSubmit)="deposit()">
           <div class="segment">
             <h1>Deposit</h1>
           </div>
           <label>
-            <input type="text" placeholder="account number" [(ngModel)]= "dacno" name="account" />
+            <input type="text" placeholder="account number" formControlName= "dacno" name="account" />
+            <p *ngIf="depositForm.get('dacno')?.touched && depositForm.get('dacno')?.errors">invalid Account number</p>
           </label>
           <label>
-            <input type="password" placeholder="Password" [(ngModel)]= "dpswd" name="password" />
+            <input type="password" placeholder="Password" formControlName= "dpswd" name="password" />
+            <p *ngIf="depositForm.get('dpswd')?.touched && depositForm.get('dpswd')?.errors">invalid password</p>
           </label>
           <label>
-            <input type="text" placeholder="Amount" [(ngModel)]= "damount" name="amount" />
+            <input type="text" placeholder="Amount" formControlName= "damount" name="amount" />
+            <p *ngIf="depositForm.get('damount')?.touched && depositForm.get('damount')?.errors">invalid Number</p>
           </label>
-          <button class="red" (click)="deposit()" type="submit">
+          <button class="red" type="submit">
             <i class="icon ion-md-lock"></i> Deposit
           </button>
         </form>
-      </div>
+    </div>
 <!-- withdraw -->
       <div class="form-section">
-        <form (ngSubmit)="withdraw()">
+        <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
           <div class="segment">
             <h1>withdrw</h1>
           </div>
           <label>
-            <input type="text" placeholder="account number" [(ngModel)]= "wacno" name="account" />
+            <input type="text" placeholder="account number" formControlName= "wacno" name="account" />
+            <p *ngIf="withdrawForm.get('wacno')?.touched  && withdrawForm.get('wacno')?.errors">invalid Account number</p>
+            
           </label>
           <label>
-            <input type="password" placeholder="Password" [(ngModel)]= "wpswd" name="password" />
+            <input type="password" placeholder="Password" formControlName= "wpswd" name="password" />
+            <p *ngIf="withdrawForm.get('wpswd')?.touched  && withdrawForm.get('wpswd')?.errors">invalid password</p>
+            
+            
           </label>
           <label>
-            <input type="text" placeholder="Amount" [(ngModel)]= "wamount" name="amount" />
+            <input type="text" placeholder="Amount" formControlName= "wamount" name="amount" />
+            <p *ngIf="withdrawForm.get('wamount')?.touched && withdrawForm.get('wamount')?.errors">invalid number</p>
+            
           </label>
-          <button class="red" (click)="withdraw()" type="submit">
+          <button class="red" type="submit">
             <i class="icon ion-md-lock"></i> withdraw
           </button>
         </form>

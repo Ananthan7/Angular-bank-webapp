@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   // acno="";
   // pswd="";
 
-  // from builder
+  // from builder MODEL 
   registerForm= this.fb.group({
     uname:['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
     acno:['', [Validators.required,Validators.minLength(4), Validators.pattern('[0-9]*')]],
@@ -28,13 +28,13 @@ export class RegisterComponent implements OnInit {
 
   // reactive form builder
   register(){
-    if(this.registerForm.get('uname')?.errors){
-      alert("invalid username")
-    } else if(this.registerForm.get('acno')?.errors){
-      alert("invalid account number min 4 numbers")
-    } else if(this.registerForm.get('pswd')?.errors){
-      alert("invalid password")
-    }
+    // if(this.registerForm.get('uname')?.errors){
+    //   alert("invalid username")
+    // } else if(this.registerForm.get('acno')?.errors){
+    //   alert("invalid account number min 4 numbers")
+    // } else if(this.registerForm.get('pswd')?.errors){
+    //   alert("invalid password")
+    // }
     if(this.registerForm.valid){
       let uname=this.registerForm.value.uname;
       let accno=this.registerForm.value.acno;
