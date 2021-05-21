@@ -6,11 +6,14 @@ import { RegisterComponent } from '../register/register.component';
   providedIn: 'root',
 })
 export class DataService {
+  currentUser='';
   uname = '';
   acno = '';
   pswd = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.getDetails();
+  }
 
   accountDetails: any = {
     1000: {
@@ -39,10 +42,28 @@ export class DataService {
     },
   };
 
+  saveDetails(){
+    localStorage.setItem("accountDetails", JSON.stringify(this.accountDetails));
+    if(this.currentUser){
+    localStorage.setItem("currentUser", JSON.stringify(this.currentUser))
+    }
+  }
+
+  getDetails(){
+    if(localStorage.getItem("accountDetails")){
+      this.accountDetails = JSON.parse(localStorage.getItem("accountDetails") || '')
+    }
+    if(localStorage.getItem("currentUser")){
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser") || '')
+    }
+  }
+
   login(acno: any, pswd: any) {
     let users = this.accountDetails;
     if (acno in users) {
       if (pswd == users[acno]['password']) {
+        this.currentUser= users[acno]["username"];
+        this.getDetails()
         return true;
       } else {
         return false;
@@ -65,6 +86,8 @@ export class DataService {
         password: pswd,
         balance: 0,
       };
+      this.saveDetails();
+      this.getDetails()
       return true;
     }
   }
@@ -74,6 +97,7 @@ export class DataService {
     if (acno in users) {
       if (pswd == users[acno]['password']) {
         users[acno]['balance'] += amount;
+        this.saveDetails()
         return users[acno]['balance'];
       } else {
         alert('invalid credentials');
@@ -91,6 +115,7 @@ export class DataService {
     if (acno in users) {
       if (pswd == users[acno]['password']) {
         users[acno]['balance'] -= amount;
+        this.saveDetails();
         return users[acno]['balance'];
       } else {
         alert('invalid credentials');

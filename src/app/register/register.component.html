@@ -28,15 +28,15 @@
       </div>
       <label>
         <input type="text" placeholder="Username" formControlName= "uname" name="username" />
-        <p *ngIf="registerForm.get('uname')?.touched && registerForm.get('uname')?.errors">invalid username</p>
+        <div *ngIf="registerForm.get('uname')?.touched && registerForm.get('uname')?.errors">invalid username</div>
       </label>
       <label>
         <input type="text" placeholder="account number" formControlName= "acno" name="account" />
-        <p *ngIf="registerForm.get('acno')?.touched || registerForm.get('acno')?.dirty && registerForm.get('acno')?.errors">invalid Account number</p>
+        <div *ngIf="registerForm.get('acno')?.touched || registerForm.get('acno')?.dirty && registerForm.get('acno')?.errors">invalid Account number</div>
       </label>
       <label>
         <input type="password" placeholder="Password" formControlName= "pswd" name="password" />
-        <p *ngIf="registerForm.get('pswd')?.touched && registerForm.get('pswd')?.errors">invalid password</p>
+        <div *ngIf="registerForm.get('pswd')?.touched && registerForm.get('pswd')?.errors">invalid password</div>
       </label>
       <button class="red" (click)="register()" type="submit">
         <i class="icon ion-md-lock"></i> Register
