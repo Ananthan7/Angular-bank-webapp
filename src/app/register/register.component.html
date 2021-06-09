@@ -32,13 +32,13 @@
       </label>
       <label>
         <input type="text" placeholder="account number" formControlName= "acno" name="account" />
-        <div *ngIf="registerForm.get('acno')?.touched || registerForm.get('acno')?.dirty && registerForm.get('acno')?.errors">invalid Account number</div>
+        <div *ngIf="registerForm.get('acno')?.touched && registerForm.get('acno')?.errors">invalid Account number</div>
       </label>
       <label>
         <input type="password" placeholder="Password" formControlName= "pswd" name="password" />
         <div *ngIf="registerForm.get('pswd')?.touched && registerForm.get('pswd')?.errors">invalid password</div>
       </label>
-      <button class="red" (click)="register()" type="submit">
+      <button class="red" type="submit">
         <i class="icon ion-md-lock"></i> Register
       </button>
       <a routerLink="" style="padding: 6px; text-decoration: none;">Login</a>

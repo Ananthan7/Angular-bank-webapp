@@ -9,9 +9,6 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  // uname="";
-  // acno="";
-  // pswd="";
 
   // from builder MODEL 
   registerForm= this.fb.group({
@@ -26,43 +23,30 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // reactive form builder
   register(){
-    // if(this.registerForm.get('uname')?.errors){
-    //   alert("invalid username")
-    // } else if(this.registerForm.get('acno')?.errors){
-    //   alert("invalid account number min 4 numbers")
-    // } else if(this.registerForm.get('pswd')?.errors){
-    //   alert("invalid password")
-    // }
+
     if(this.registerForm.valid){
       let uname=this.registerForm.value.uname;
       let accno=this.registerForm.value.acno;
       let pswd=this.registerForm.value.pswd;
-      const user=this.dataService.register(uname,accno,pswd)   
-      if(user){
-        alert("Successfully registerd")
+
+      this.dataService.register(accno,uname,pswd)
+    .subscribe((result:any)=>{
+      if(result){
+        alert(result.message)
         this.router.navigateByUrl('')
-      }else{
-        alert("User already exists")
       }
+    },
+    (result)=>{
+      alert(result.error.message)
+    })
+
+    }
+    else{
+      alert("invalid form")
     }
     
   }
-  
-
-  // register(){
-  //   let uname=this.uname;
-  //   let accno=this.acno;
-  //   let pswd=this.pswd;
-  //   const user=this.dataService.register(uname,accno,pswd)   
-  //   if(user){
-  //     alert("Successfully registerd")
-  //     this.router.navigateByUrl('')
-  //   }else{
-  //     alert("User already exists")
-  //   }
-  // }
 
 
 }

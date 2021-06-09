@@ -22,37 +22,21 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  // datas
-  
-
-  // fetch values
-  // accnoChange(event:any){
-  //   this.accno=event.target.value;
-  //   console.log(this.accno);
-    
-
-  // }
-  // pswdChange(event:any){
-  //   this.pswd=event.target.value;
-  //   console.log(this.pswd);
-    
-  // }
-  // login event binding
   login(){
     let acno = this.loginForm.value.acno;
     let pswd = this.loginForm.value.pswd;
-    const users=this.dataService.login(acno,pswd);
-    if(users){
-      this.router.navigateByUrl("dashboard")
-    }
-    else{
-      alert("invalid password")
+    if(this.loginForm.valid){
+      this.dataService.login(acno,pswd)
+      .subscribe((result:any)=>{
+        if(result){
+          alert(result.message)
+          localStorage.setItem("name", result.name)
+          this.router.navigateByUrl('/dashboard')
+        }
+      },
+      (result)=>{
+        alert(result.error.message)
+      })
     }
   }
-
-  register(){
-    this.router.navigateByUrl('register')
-  }
-  
-
 }

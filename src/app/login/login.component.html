@@ -1,27 +1,4 @@
 <div>
-    <header class="l-header">
-      <nav class="nav bd-grid">
-        <div style="width: 50%;">
-          <a href="#" class="nav__logo"><span class="head-logo">ICICI BANK </span><p>banking partner</p></a>
-        </div>
-        <div class="list">
-          <div class="nav__item">
-            <a href="#" class="nav__link active">Home </a>
-          </div>
-          <div class="nav__item">
-            <a href="register" class="nav__link">Account </a>
-          </div>
-          <div class="nav__item">
-            <a routerLink="" class="nav__link">Balance </a>
-          </div>
-          <div class="nav__item">
-            <a routerLink="" class="nav__link">Login </a>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-
     <!-- form -->
     <div class="form-section">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -33,21 +10,21 @@
           <!-- <input type="text" [value]="accno" #accno (change)="accnoChange($event)" /> -->
           <!-- <input type="text" [(ngModel)]= "acno" placeholder="account number" #accno /> -->
           <input type="text" placeholder="account number" formControlName= "acno" name="account" />
-          <p *ngIf="loginForm.get('acno')?.touched && loginForm.get('acno')?.errors">invalid Account number</p>
+          <p *ngIf="(loginForm.get('acno')?.touched || loginForm.get('acno')?.dirty) && loginForm.get('acno')?.errors">invalid Account number</p>
         </label>
         <label>
           <!-- <input type="password" placeholder="Password" #password (change)="pswdChange($event)" /> -->
           <!-- <input type="password" placeholder="Password" [(ngModel)]= "pswd" name="password" /> -->
           <input type="password" placeholder="Password" formControlName= "pswd" name="password" />
-          <p *ngIf="loginForm.get('pswd')?.touched && loginForm.get('pswd')?.errors">invalid password</p>
+          <p *ngIf="(loginForm.get('pswd')?.touched || loginForm.get('pswd')?.dirty) && loginForm.get('pswd')?.errors">invalid password</p>
           
         </label>
         <button class="red" type="submit">
           <i class="icon ion-md-lock"></i> Log in
         </button>
         <div style="padding: 6px; text-align: center;"><a routerLink="register">forgot password</a></div>
-        <button class="red" (click)="register()" type="button">
-          <i class="icon ion-md-lock"></i> Create Account
+        <button class="red" type="submit">
+          <a routerLink="register">Create Account</a>
         </button>
       </form>
     </div>

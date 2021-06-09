@@ -2,6 +2,7 @@
     <div class="main">
         <h2>Welcome {{user}}</h2>
     </div>
+    
 <!-- deposit -->
     <div class="form-section">
         <form [formGroup]="depositForm" (ngSubmit)="deposit()">
@@ -10,7 +11,7 @@
           </div>
           <label>
             <input type="text" placeholder="account number" formControlName= "dacno" name="account" />
-            <p *ngIf="depositForm.get('dacno')?.touched && depositForm.get('dacno')?.errors">invalid Account number</p>
+            <p *ngIf="depositForm.get('dacno')?.touched  && depositForm.get('dacno')?.errors">invalid Account number</p>
           </label>
           <label>
             <input type="password" placeholder="Password" formControlName= "dpswd" name="password" />
@@ -26,7 +27,7 @@
         </form>
     </div>
 <!-- withdraw -->
-      <div class="form-section">
+      <div class="form-section" id="withdraw">
         <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
           <div class="segment">
             <h1>withdrw</h1>

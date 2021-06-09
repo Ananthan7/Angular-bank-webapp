@@ -18,6 +18,7 @@ div, p {
   color: $color-shadow;
   text-shadow: 1px 1px 1px $color-white;
 }
+  
 
 .list{
   display: flex;
@@ -87,6 +88,8 @@ button {
   .icon {
     margin-right: $ruler/2;
   }
+
+
   
   &.unit {
     border-radius: $ruler/2;

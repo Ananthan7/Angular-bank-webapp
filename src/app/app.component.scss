@@ -1,0 +1,30 @@
+header, nav, a{
+    text-decoration: none;
+    color: rgb(77, 72, 72);
+    font-size: 16px;
+    
+  }
+  .head-logo{
+    color: #61677C;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 20px;
+  }
+  .head-logo, p{
+    padding-left: 20px;
+  }
+  
+  .list{
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    width: 50%;
+  
+  }
+  nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+  }
