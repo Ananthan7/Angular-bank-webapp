@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
       (result:any)=>{
         alert(result.error.message)
       })
-     
     }
     else{
       alert("Invalid Form")

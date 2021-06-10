@@ -8,7 +8,9 @@ import { Injectable } from '@angular/core';
 export class DataService {
   currentUser='';
 
-
+  options = {
+    withCredentials:true,
+  }
   accountDetails: any = {
     1000:{acno:1000,actype:"savings",username:"userone",password:"userone",balance:50000},
     1001:{acno:1001,actype:"savings",username:"usertwo",password:"usertwo",balance:5000},
@@ -51,7 +53,7 @@ export class DataService {
       acno,
       password
     }
-    return this.http.post('http://localhost:3000/login',data)
+    return this.http.post('http://localhost:3000/login',data, this.options)
   }
   
 
@@ -61,7 +63,7 @@ export class DataService {
       password,
       amount
     }
-    return this.http.post('http://localhost:3000/deposit',data)
+    return this.http.post('http://localhost:3000/deposit',data, this.options)
   }
 
   withdraw(acno: any, password: any, amount: any) {
@@ -70,6 +72,6 @@ export class DataService {
       password,
       amount
     }
-    return this.http.post('http://localhost:3000/withdraw',data)
+    return this.http.post('http://localhost:3000/withdraw',data, this.options)
   }
 }
